@@ -1,0 +1,137 @@
+html{
+    background: #282828;
+    text-align: center;
+    font-size: 10px;
+}
+body{
+    margin:0px;
+    font-size: 2rem;
+    display: flex;
+    flex: 1; /*Quantas colunas terá*/
+    min-height: 100vh;
+    align-items: center;
+}
+.clock{
+    width: 30rem;
+    height: 30rem;
+    position: relative;
+    padding: 2rem;
+    border: 7px solid #282828;
+    margin:50px auto;
+    border-radius: 100%;
+    box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
+                inset 4px 4px 10px rgba(0,0,0,0.5),
+                inset -4px -4px 10px rgba(67,67,67,0.5),
+                4px 4px 10px rgba(0,0,0,0.3);
+}
+.outer-clock-face{
+    position: relative;
+    background: #282828;
+    overflow: hidden; /*Se for maior que a tela ira esconder o conteúdo*/
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+.outer-clock-face::after{
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);/*Opera*/
+    -moz-transform: rotate(90deg);/*FireFox*/
+}
+.outer-clock-face::after,
+.outer-clock-face::before,
+.outer-clock-face .marking{
+    content: '';
+    width: 5px;
+    position: absolute;
+    height: 100%;
+    background: #1df52f;
+    left: 49%;
+    z-index: 0; /*Camada em que se encontra, quanto mais negativo mais para tras*/
+}
+.outer-clock-face .marking{
+    background: #bdbdcd;
+    width: 3px;
+}
+.outer-clock-face .marking.marking-five{
+    transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);/*Opera*/
+    -moz-transform: rotate(30deg);/*FireFox*/
+} 
+.outer-clock-face .marking.marking-ten{
+    transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);/*Opera*/
+    -moz-transform: rotate(60deg);/*FireFox*/
+}
+.outer-clock-face .marking.marking-twenty{
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);/*Opera*/
+    -moz-transform: rotate(90deg);/*FireFox*/
+}
+.outer-clock-face .marking.marking-twenty-five{
+    transform: rotate(120deg);
+    -webkit-transform: rotate(120deg);/*Opera*/
+    -moz-transform: rotate(120deg);/*FireFox*/
+}
+.outer-clock-face .marking.marking-zero{
+    transform: rotate(150deg);
+    -webkit-transform: rotate(150deg);/*Opera*/
+    -moz-transform: rotate(150deg);/*FireFox*/
+}
+.inner-clock-face{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #282828;
+    z-index: 1;
+    border-radius: 50%;
+}
+.inner-clock-face::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 18px;
+    margin-left: -9px;
+    margin-top: -6px;
+    background: #4d4b63;
+    z-index: 11;
+}
+.hand{
+    width: 50%;
+    height: 6px;
+    transform: rotate(90deg);
+    position: absolute;
+    border-radius: 6px;
+    top: 50%;
+    right: 50%;
+    background: #61afff;
+    transform-origin: 100%;
+    transition-timing-function: cubic-bezier(0.1,2.7,0.58,1);
+}
+
+.hand.hour-hand{
+    width: 30%;
+    z-index: 3;
+}
+
+.hand.min-hand{
+    width: 40%;
+    z-index: 10;
+    height: 3px;
+    background-color: rgb(255, 252, 47);
+}
+
+.hand.second-hand{
+    width: 45%;
+    z-index: 11;
+    height: 2px;
+    background: #f00;
+    
+}   
+
+
